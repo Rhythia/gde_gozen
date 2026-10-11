@@ -196,6 +196,16 @@ int AudioStreamFFmpeg::open(const String& path, int stream_index) {
 	return 0;
 }
 
+void AudioStreamFFmpeg::close() {
+    loaded = false;
+    av_stream = nullptr;
+    swr_ctx.reset();
+    av_codec_ctx.reset();
+    av_format_ctx.reset();
+    avio_ctx.reset();
+    file_buffer.clear();
+}
+
 Dictionary AudioStreamFFmpeg::get_icy_headers() {
 	if (!use_icy) {
 		return Dictionary();
@@ -514,6 +524,7 @@ bool AudioStreamFFmpegPlayback::fill_buffer() {
 
 void AudioStreamFFmpeg::_bind_methods() {
 	ClassDB::bind_method(D_METHOD("open", "path", "stream_index"), &AudioStreamFFmpeg::open, DEFVAL(-1));
+	ClassDB::bind_method(D_METHOD("close"), &AudioStreamFFmpeg::close);
 	ClassDB::bind_method(D_METHOD("__instantiate_playback"), &AudioStreamFFmpeg::_instantiate_playback);
 	ClassDB::bind_method(D_METHOD("set_use_icy", "value"), &AudioStreamFFmpeg::set_use_icy);
 	ClassDB::bind_method(D_METHOD("get_use_icy"), &AudioStreamFFmpeg::get_use_icy);
