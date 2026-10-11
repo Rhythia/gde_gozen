@@ -31,6 +31,8 @@ public partial class AudioStreamFFmpeg : AudioStream
 
     public Error Open(string path, int streamIndex = -1) => _backer.AsGodotObject().Call("open", path, streamIndex).As<Error>();
 
+    public void Close() => _backer.AsGodotObject().Call("close");
+
 	public Dictionary GetIcyHeaders() => _backer.AsGodotObject().Call("get_icy_headers").As<Dictionary>();
 
 	public string GetStreamTitle() => _backer.AsGodotObject().Call("get_stream_title").AsString();

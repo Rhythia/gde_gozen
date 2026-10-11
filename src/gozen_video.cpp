@@ -374,7 +374,7 @@ void GoZenVideo::close() {
 
 	av_codec_ctx.reset();
 	av_format_ctx.reset();
-
+	
 	avio_ctx.reset();
 	file_buffer.clear();
 }
@@ -626,6 +626,8 @@ int GoZenVideo::_seek_frame(int frame_nr) {
 
 void GoZenVideo::_bind_methods() {
 	BIND_METHOD_ARGS(open, "video_path");
+
+	BIND_METHOD(close);
 
 	BIND_METHOD(is_open);
 

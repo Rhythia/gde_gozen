@@ -159,8 +159,11 @@ public partial class VideoPlayback : Control
         VideoTexture.StretchMode = TextureRect.StretchModeEnum.KeepAspectCentered;
         VideoTexture.ExpandMode = TextureRect.ExpandModeEnum.IgnoreSize;
 
-        AddChild(VideoTexture);
-        AddChild(AudioStream);
+        if (VideoTexture.GetParent() != this) { AddChild(VideoTexture); }
+        if (AudioStream.GetParent() != this) { AddChild(AudioStream); }
+
+        // AddChild(VideoTexture);
+        // AddChild(AudioStream);
 
         AudioServer.AddBus();
         AudioStream.Bus = AudioServer.GetBusName(AudioServer.BusCount - 1);
@@ -390,12 +393,17 @@ public partial class VideoPlayback : Control
         {
             if (IsPlaying)
                 Pause();
+                
+            Video.Close();
             Video = null;
         }
 
         if (AudioStream != null)
         {
             AudioStream.Stop();
+
+            if (AudioStream.Stream is AudioStreamFFmpeg ffmpeg) { ffmpeg.Close(); }
+
             AudioStream.Stream = null;
         }
     }

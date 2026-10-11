@@ -2,15 +2,22 @@
 
 # GDE GoZen
 
-[![Discord](https://img.shields.io/discord/1120566516899926068?label=Discord&logo=discord&logoColor=white)](https://discord.gg/BdbUf7VKYC)
+[![Discord](https://img.shields.io/discord/1064060807320702996?label=Rhythia&logo=discord&logoColor=white&color=5865F2)](https://discord.gg/rhythia)
+[![Discord](https://img.shields.io/discord/1120566516899926068?label=Gozen&logo=discord&logoColor=white)](https://discord.gg/BdbUf7VKYC)
 [![License: LGPL v2](https://img.shields.io/badge/License-LGPL_v2-blue.svg)](https://www.gnu.org/licenses/lgpl-2.0)
 
-*Video playback addon for the Godot game engine*
+*Video playback addon for the Godot game engine, adapted for [Rhythia Client](https://github.com/Rhythia/Client)*
 
 ## What is GDE GoZen?
 GDE GoZen is a GDExtension addon for the Godot game engine which provides video playback for all kinds of video formats. Godot natively only supports Theora, but with this GDExtension you'll be able to use files such as `.mp4` and more thanks to using the power of FFmpeg.
 
 GDE GoZen is part of the [GoZen project](https://codeberg.org/gozen/gozen), a video editor made with Godot!
+
+
+## Changes by Rhythia
+### fixes:
+- Correctly release file lock when calling Close() (tested on c#)
+- Only add required child nodes to VideoPlayback if they aren’t already parented
 
 ## Features
 - Smooth video playback;
