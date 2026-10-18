@@ -47,7 +47,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # checkout v4.3.1
         with:
           submodules: recursive
 
@@ -147,7 +147,7 @@ jobs:
           ${ANDROID_SDK_ROOT}/cmdline-tools/latest/bin/sdkmanager --install "ndk;${NDK_VERSION}" "platform-tools" "platforms;android-${ANDROID_PLATFORM}" "build-tools;${ANDROID_BUILD_TOOLS}" --sdk_root=${ANDROID_SDK_ROOT}
 
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # checkout v4.3.1
         with:
           submodules: recursive
 
@@ -184,12 +184,12 @@ jobs:
     name: Package & Release
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # checkout v4.3.1
         with:
           submodules: recursive
 
       - name: Download all artifacts
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # download-artifact v4.3.0
         with:
           path: artifacts
 
@@ -231,28 +231,28 @@ jobs:
           sed -i 's/^version="[^"]*"/version="'$VERSION'"/' test_room_csharp/addons/gde_gozen/plugin.cfg
 
       - name: Upload artifact (GDScript)
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # upload-artifact v4.6.2
         with:
           name: GDE_GoZen_v${{ inputs.version }}
           path: test_room/addons/
           retention-days: 7
 
       - name: Upload artifact (C#)
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # upload-artifact v4.6.2
         with:
           name: GDE_GoZen_v${{ inputs.version }}_csharp
           path: test_room_csharp/addons/
           retention-days: 7
 
       - name: Upload artifact (GDScript Test Room)
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # upload-artifact v4.6.2
         with:
           name: GDE_GoZen_test_room_v${{ inputs.version }}
           path: test_room/
           retention-days: 7
 
       - name: Upload artifact (C# Test Room)
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # upload-artifact v4.6.2
         with:
           name: GDE_GoZen_test_room_v${{ inputs.version }}_csharp
           path: test_room_csharp/

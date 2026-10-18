@@ -42,7 +42,7 @@ runs:
         python3 -c "import build; build.update_csharp_bins()"
 
     - name: Upload artifact (GDScript)
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # upload-artifact v4.6.2
       with:
         name: bin_${{ inputs.platform }}_${{ inputs.arch }}
         path: test_room/addons/gde_gozen/bin
@@ -50,7 +50,7 @@ runs:
         if-no-files-found: error
 
     - name: Upload artifact (C#)
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # upload-artifact v4.6.2
       with:
         name: bin_${{ inputs.platform }}_${{ inputs.arch }}_csharp
         path: test_room_csharp/addons/gde_gozen/bin
